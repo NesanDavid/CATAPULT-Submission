@@ -1,0 +1,3 @@
+org\inventory\service\api\InventoryApi.class
+org\inventory\service\model\Book.class
+org\inventory\service\Application.class

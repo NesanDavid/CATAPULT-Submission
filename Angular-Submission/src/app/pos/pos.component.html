@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="title">
+        <h2>Pharmaceutical Order Form</h2>
+    </div>
+  <div class="d-flex">
+    <form action="" method=""  [formGroup]="signupForm">
+      <label>
+        <span class="fname">First Name <span class="required">*</span></span>
+        <input type="text" name="fname" formControlName="required">
+      </label>
+       <div *ngIf = "required.errors?.required"  class="col-sm-3 text-danger">
+        Name field can't be blank
+    </div>
+      <label>
+        <span class="lname">Last Name </span>
+        <input type="text" name="lname">
+      </label>
+      <label>
+        <span>Company Name (Optional)</span>
+        <input type="text" name="cn">
+      </label>
+      <label>
+        <span>Country <span class="required">*</span></span>
+        <select name="selection"  [(ngModel)]="selected" (change)='onOptionsSelected($event)'>
+          <option value="select">Select a country...</option>
+          <option value="IND">India</option>
+          <option value="USA">United States</option>
+          <option value="UK">United Kingdom</option>
+        </select>
+      </label>
+      <label>
+        <span>Street Address <span class="required">*</span></span>
+        <input type="text" name="houseadd" placeholder="House number and street name" formControlName="required"  >
+      </label>
+      <div *ngIf="required.invalid && required.touched"
+      class="col-sm-3 text-danger">
+      <div *ngIf = "required.errors?.required"  class="col-sm-3 text-danger">
+        Required field can't be blank
+    </div>
+    </div>
+      <label>
+        <span>&nbsp;</span>
+        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)">
+      </label>
+      <label>
+        <span>Town / City </span>
+        <input type="text" name="city"> 
+      </label>
+      <label>
+        <span>State / County </span>
+        <input type="text" name="city"> 
+      </label>
+      <label>
+        <span>Postcode / ZIP </span>
+        <input type="text" name="city"> 
+      </label>
+      <label>
+        <span>Phone <span class="required">*</span></span>
+        <input type="tel" name="phone" [value]="code" formControlName="phone"> 
+      </label>
+      <div *ngIf="phone.invalid && phone.touched"
+      class="col-sm-3 text-danger">
+      <div *ngIf = "phone.errors?.required"  class="col-sm-3 text-danger">
+        Phone field can't be blank
+    </div>
+    </div>
+    <div *ngIf="phone.errors?.pattern" class="col-sm-3 text-danger">Please, Enter +XY10 digit Mobile Number.</div>  
+      <label>
+        <span>Email Address <span class="required">*</span></span>
+        <input type="email" formControlName = "email" name="email"> 
+      </label>
+      <div *ngIf="email.invalid && email.touched"
+      class="col-sm-3 text-danger">
+
+      <div *ngIf = "email.errors?.required">
+          Email field can't be blank
+      </div>
+
+      <div *ngIf = "email.errors?.pattern">
+          The email id doesn't seem right
+      </div>
+      </div>
+    </form>
+    <div class="Yorder">
+      <table>
+        <tr>
+          <th colspan="2">Items Selected</th>
+        </tr>
+        <tr>
+          <td>Paracetamol x {{qty[0]}}</td>
+          <td>{{cost[0]}} ₹</td>
+          <td> <button type="button" value="0+" (click)='onClick($event)'  >+</button>
+          <td> <button type="button" value="0-" style="background-color: rgb(221, 91, 91);" (click)='onClick($event)'>-</button>  </td>
+        </tr>
+        <tr>
+        <tr>
+          <td>Vics x {{qty[1]}}</td>
+          <td>{{cost[1]}} ₹</td>
+          <td> <button type="button" value="1+" (click)='onClick($event)'  >+</button>
+          <td> <button type="button" value="1-" style="background-color: rgb(221, 91, 91);" (click)='onClick($event)'>-</button>  </td>
+        </tr>
+        <tr>
+          <td>Tax Collected<br>(GST 2.00%)</td>
+          <td>{{tax}}</td>
+        </tr>
+        <tr>
+          <td>Subtotal</td>
+          <td>{{subtotal}} ₹</td>
+        </tr>
+        
+      </table><br>
+      <div>
+        <input type="radio" name="dbt" value="dbt" checked> UPI
+      </div>
+      <p>
+         UPI can be used for a 0.00rs transaction charge
+      </p>
+      <div>
+        <input type="radio" name="dbt" value="cd"> Cash on Delivery
+      </div>
+      <div>
+        <input type="radio" name="dbt" value="cd"> Credit Card<span>
+        <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">
+        </span>
+      </div>
+      <button type="button" (click)='subjectdemo($event)'>Place Order</button>
+    </div><!-- Yorder -->
+    
+   </div >
+  <div style="font-weight: bold;"> ORDER NUMBER: {{orderid}}</div>
+  </div>

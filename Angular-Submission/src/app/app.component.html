@@ -1,0 +1,23 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+       <div  style="padding-left:70%;color: azure;"> Welcome back {{currentUser.firstName | uppercase}}  {{currentUser.lastName | uppercase}}! </div>
+    
+</nav>
+
+<!-- main app container -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+
+<!-- credits -->
+<div class="text-center mt-4">
+    www.NesanPharmaceuticalPOSdemo.io <br/>
+    <p>       
+     
+   </p>
+</div>

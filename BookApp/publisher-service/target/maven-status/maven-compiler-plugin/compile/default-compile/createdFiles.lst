@@ -1,0 +1,5 @@
+org\publisher\service\Application.class
+org\publisher\service\model\Book.class
+org\publisher\service\api\PublisherApi.class
+org\publisher\service\model\Publisher.class
+org\publisher\service\intercomm\InventoryClient.class
